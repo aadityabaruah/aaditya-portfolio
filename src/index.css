@@ -1,0 +1,484 @@
+:root {
+  /* Core Palette */
+  --bg-dark: #050507;
+  /* Near black */
+  --bg-tint: #0a0a12;
+  /* Slightly blue/purple tint */
+  --fg-primary: #ededed;
+  --fg-secondary: #a1a1aa;
+  --fg-tertiary: #52525b;
+
+  /* Slate Theme - Dark Mode (Default) */
+  --bg-dark: #020617;
+  /* Slate 950 */
+  --bg-tint: #0f172a;
+  /* Slate 900 */
+  --fg-primary: #f1f5f9;
+  /* Slate 100 */
+  --fg-secondary: #94a3b8;
+  /* Slate 400 */
+  --fg-tertiary: #475569;
+  /* Slate 600 */
+
+  --glass-bg: rgba(2, 6, 23, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+
+  --accent-cyan: #06b6d4;
+  /* Cyan 500 */
+  --accent-cyan-rgb: 6, 182, 212;
+  --accent-cyan-dim: rgba(6, 182, 212, 0.1);
+  --accent-violet: #8b5cf6;
+  /* Violet 500 */
+  --accent-violet-rgb: 139, 92, 246;
+  --accent-violet-dim: rgba(139, 92, 246, 0.1);
+
+  --accent-glow: rgba(6, 182, 212, 0.15);
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --ease-main: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Motion */
+  --dur-fast: 200ms;
+  --dur-med: 400ms;
+  --dur-slow: 700ms;
+}
+
+/* Slate Theme - Light Mode */
+html.light-mode,
+.light-mode {
+  /* Backgrounds */
+  --bg-dark: #f8fafc;
+  /* Slate 50 */
+  --bg-tint: #ffffff;
+  /* Pure white */
+
+  /* Text */
+  --fg-primary: #1e293b;
+  /* Slate 800 */
+  --fg-secondary: #475569;
+  /* Slate 600 */
+  --fg-tertiary: #94a3b8;
+  /* Slate 400 */
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-highlight: rgba(0, 0, 0, 0.03);
+
+  /* Accents */
+  --accent-cyan: #0891b2;
+  /* Cyan 600 */
+  --accent-cyan-rgb: 8, 145, 178;
+  --accent-cyan-dim: rgba(8, 145, 178, 0.1);
+
+  --accent-violet: #7c3aed;
+  /* Violet 600 */
+  --accent-violet-rgb: 124, 58, 237;
+  --accent-violet-dim: rgba(124, 58, 237, 0.1);
+
+  --accent-glow: rgba(8, 145, 178, 0.15);
+}
+
+/* Smooth Transitions - Optimized for performance */
+:root {
+  --theme-transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+body {
+  transition: var(--theme-transition);
+}
+
+.glass-panel,
+.spotlight-card,
+.btn,
+.theme-toggle-btn {
+  transition: var(--theme-transition), transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Light Mode Global Overrides */
+html.light-mode body {
+  color: var(--fg-primary);
+  background-color: var(--bg-dark);
+}
+
+/* Light Mode Background Effects */
+html.light-mode .bg-grid {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+html.light-mode .bg-gradient {
+  background: radial-gradient(circle at 50% 0%, rgba(8, 145, 178, 0.06), transparent 50%),
+    radial-gradient(circle at 0% 50%, rgba(124, 58, 237, 0.06), transparent 50%);
+}
+
+/* Ensure Nav Items are visible */
+html.light-mode .dock-item {
+  color: var(--fg-secondary);
+}
+
+html.light-mode .dock-item:hover,
+html.light-mode .dock-item.active {
+  color: var(--fg-primary);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure Cards have shadows in light mode instead of just borders */
+html.light-mode .glass-panel,
+html.light-mode .spotlight-card,
+html.light-mode .project-card {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+html.light-mode .glass-panel:hover {
+  background: #fafafa;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode spotlight effect */
+html.light-mode .spotlight-card::before {
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(0, 0, 0, 0.03),
+      transparent 40%);
+}
+
+/* Theme Toggle Button in Light Mode */
+html.light-mode .theme-toggle-btn {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #18181b;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+
+/* Global Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+  /* Fallback */
+}
+
+/* Background Effects - Optimized */
+.bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  z-index: -2;
+  pointer-events: none;
+  contain: strict;
+  will-change: auto;
+}
+
+.bg-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(34, 211, 238, 0.06), transparent 50%),
+    radial-gradient(ellipse at 0% 50%, rgba(167, 139, 250, 0.06), transparent 50%);
+  contain: strict;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Technical Mode Background Override */
+html.technical-mode .bg-grid {
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+}
+
+html.technical-mode .bg-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(0, 20, 0, 0.8), #000000);
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--fg-primary), var(--fg-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 8rem 0;
+  position: relative;
+}
+
+/* Glass Panel */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  transition: all var(--dur-med) var(--ease-main);
+}
+
+.glass-panel:hover {
+  border-color: var(--glass-highlight);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Spotlight Effect Utility */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.06),
+      transparent 40%);
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Magnetic Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 9999px;
+  /* Pill shape */
+  font-weight: 500;
+  transition: transform var(--dur-fast) var(--ease-main), box-shadow var(--dur-fast);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--fg-primary);
+  color: var(--bg-dark);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--glass-border);
+  color: var(--fg-primary);
+}
+
+.btn-outline:hover {
+  border-color: var(--fg-primary);
+  background: var(--glass-bg);
+}
+
+/* Technical Mode Overrides */
+html.technical-mode,
+.technical-mode {
+  --bg-dark: #000000;
+  --bg-tint: #050505;
+  --fg-primary: #00ff41;
+  --fg-secondary: #008f11;
+  --fg-tertiary: #003b00;
+  --accent-cyan: #00ff41;
+  --accent-violet: #008f11;
+  --glass-bg: rgba(0, 20, 0, 0.9);
+  --glass-border: #003b00;
+  --font-display: 'JetBrains Mono', monospace;
+  --font-body: 'JetBrains Mono', monospace;
+}
+
+html.technical-mode .grain-overlay {
+  display: none;
+}
+
+html.technical-mode .spotlight-overlay {
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+html.technical-mode .glass-panel,
+html.technical-mode .spotlight-card {
+  background: black;
+  border: 1px solid var(--fg-secondary);
+  box-shadow: none;
+  border-radius: 0;
+}
+
+html.technical-mode .btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+html.technical-mode h1,
+html.technical-mode h2,
+html.technical-mode h3 {
+  text-transform: uppercase;
+}
+
+/* Command Palette Hint */
+.cmd-hint {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--fg-secondary);
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeIn 1s ease-out 2s backwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--fg-tertiary);
+  border-radius: 3px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  color: var(--fg-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-main);
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+  background: var(--bg-tint);
+  box-shadow: 0 0 20px var(--accent-cyan-dim);
+}
+
+/* ========== MOBILE OPTIMIZATIONS ========== */
+@media (max-width: 768px) {
+  /* Base Layout */
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+  
+  /* Typography */
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.75rem !important; }
+  h3 { font-size: 1.25rem !important; }
+  
+  /* Theme toggle repositioned */
+  .theme-toggle-btn {
+    top: 1rem;
+    right: 1rem;
+    bottom: auto;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Glass panels */
+  .glass-panel {
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  
+  /* Buttons */
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.5rem !important; }
+}
