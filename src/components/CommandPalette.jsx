@@ -15,7 +15,7 @@ const KNOWLEDGE_BASE = [
     {
         id: 'contact',
         keywords: ['email', 'contact', 'hire', 'reach', 'job'],
-        response: "You can reach Aaditya at abb2237@columbia.edu. He is open to Summer 2025 opportunities."
+        response: "You can reach Aaditya at abb2237@columbia.edu. He is open to Summer 2026 opportunities."
     },
     {
         id: 'status',

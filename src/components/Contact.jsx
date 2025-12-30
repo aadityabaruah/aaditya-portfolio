@@ -143,7 +143,7 @@ const Contact = () => {
                 <span className="gradient-text-animated">Something Amazing</span>
               </h2>
               <p className="contact-subtitle">
-                I'm currently looking for Summer 2025 opportunities in ML Engineering and Research.
+                I'm currently looking for Summer 2026 opportunities in ML Engineering and Research.
                 If you're building something interesting, I'd love to chat.
               </p>
             </div>

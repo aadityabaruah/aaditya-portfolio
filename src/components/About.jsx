@@ -19,7 +19,7 @@ const About = () => {
                     <h3>Aaditya B. Baruah</h3>
                     <p>M.S. CS @ Columbia</p>
                     <div className="status-badge">
-                      <span className="dot"></span> Open for Summer 2025
+                      <span className="dot"></span> Open for Summer 2026
                     </div>
                   </div>
                 </div>
@@ -74,7 +74,7 @@ EDUCATION
 FLAGS
     --eb1-recipient    Extraordinary Ability Green Card Pathway
     --published        IEEE ICCCI, IEEE ITS
-    --open-to-work     Summer 2025 Internships
+    --open-to-work     Summer 2026 Internships
 
 AUTHOR
     Written by Aaditya B. Baruah.`}
